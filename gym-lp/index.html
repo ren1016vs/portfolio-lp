@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORGED | パーソナルトレーニングジム</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Noto+Sans+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #f5f0eb;
+      --accent: #e8451e;
+      --gray: #1a1a1a;
+      --muted: #888;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── HEADER ─── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 48px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 4px;
+      color: var(--white);
+      text-decoration: none;
+    }
+
+    .logo span { color: var(--accent); }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-left: 32px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--white); }
+
+    .header-cta {
+      background: var(--accent);
+      color: var(--white) !important;
+      padding: 10px 24px;
+      border-radius: 2px;
+      font-weight: 700 !important;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 40%, rgba(232,69,30,0.12) 0%, transparent 60%),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 79px,
+          rgba(255,255,255,0.03) 79px,
+          rgba(255,255,255,0.03) 80px
+        );
+    }
+
+    .hero-number {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(240px, 30vw, 440px);
+      line-height: 1;
+      color: rgba(255,255,255,0.025);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 6px 16px;
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(64px, 9vw, 130px);
+      line-height: 0.92;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.4s forwards;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+      display: block;
+    }
+
+    .hero-sub {
+      margin-top: 28px;
+      font-size: 16px;
+      line-height: 1.8;
+      color: rgba(245,240,235,0.65);
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s forwards;
+    }
+
+    .hero-actions {
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.8s forwards;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+      padding: 16px 40px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(232,69,30,0.4);
+    }
+
+    .hero-note {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      right: 48px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 48px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ─── PAIN ─── */
+    .pain {
+      padding: 120px 48px;
+      background: var(--gray);
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .pain h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 5vw, 72px);
+      line-height: 1.1;
+      max-width: 640px;
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2px;
+      margin-top: 64px;
+    }
+
+    .pain-item {
+      background: rgba(255,255,255,0.03);
+      padding: 36px 28px;
+      border-left: 3px solid transparent;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .pain-item:hover {
+      border-left-color: var(--accent);
+      background: rgba(255,255,255,0.05);
+    }
+
+    .pain-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      color: rgba(232,69,30,0.25);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .pain-item p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(245,240,235,0.7);
+    }
+
+    /* ─── FEATURES ─── */
+    .features {
+      padding: 120px 48px;
+      position: relative;
+    }
+
+    .features-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 80px;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .features h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 5vw, 72px);
+      line-height: 1.1;
+    }
+
+    .features-desc {
+      max-width: 360px;
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(245,240,235,0.6);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .feature-card {
+      background: var(--gray);
+      padding: 48px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-card:hover { transform: translateY(-4px); }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 24px;
+      color: var(--accent);
+    }
+
+    .feature-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(245,240,235,0.65);
+    }
+
+    /* ─── PRICING ─── */
+    .pricing {
+      padding: 120px 48px;
+      background: var(--gray);
+    }
+
+    .pricing h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 5vw, 72px);
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .pricing-sub {
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 64px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .plan {
+      background: var(--black);
+      padding: 48px 36px;
+      position: relative;
+    }
+
+    .plan.featured {
+      background: var(--accent);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -1px; right: 24px;
+      background: var(--white);
+      color: var(--accent);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+    }
+
+    .plan-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    .plan.featured .plan-name { color: rgba(255,255,255,0.7); }
+
+    .plan-price {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 72px;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .plan-price span {
+      font-size: 20px;
+      color: var(--muted);
+    }
+
+    .plan.featured .plan-price span { color: rgba(255,255,255,0.7); }
+
+    .plan-period {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 32px;
+      letter-spacing: 1px;
+    }
+
+    .plan.featured .plan-period { color: rgba(255,255,255,0.7); }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .plan-features li {
+      font-size: 14px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(245,240,235,0.75);
+    }
+
+    .plan.featured .plan-features li {
+      border-bottom-color: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .plan.featured .plan-features li::before { color: var(--white); }
+
+    .btn-plan {
+      display: block;
+      text-align: center;
+      padding: 14px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.2s;
+    }
+
+    .plan:not(.featured) .btn-plan {
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+    }
+
+    .plan:not(.featured) .btn-plan:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .plan.featured .btn-plan {
+      background: var(--white);
+      color: var(--accent);
+    }
+
+    .plan.featured .btn-plan:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    /* ─── VOICE ─── */
+    .voice {
+      padding: 120px 48px;
+    }
+
+    .voice h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 5vw, 72px);
+      margin-bottom: 64px;
+    }
+
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+    }
+
+    .voice-card {
+      background: var(--gray);
+      padding: 40px 32px;
+      position: relative;
+    }
+
+    .voice-card::before {
+      content: '"';
+      position: absolute;
+      top: 16px;
+      left: 24px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      color: var(--accent);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .voice-text {
+      font-size: 15px;
+      line-height: 1.9;
+      color: rgba(245,240,235,0.8);
+      margin-bottom: 28px;
+      padding-top: 16px;
+    }
+
+    .voice-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .voice-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .voice-name {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .voice-info {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── FAQ ─── */
+    .faq {
+      padding: 120px 48px;
+      background: var(--gray);
+    }
+
+    .faq h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(40px, 5vw, 72px);
+      margin-bottom: 64px;
+    }
+
+    .faq-list {
+      max-width: 720px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: left;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-q .faq-icon {
+      width: 24px;
+      height: 24px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, border-color 0.2s;
+      font-size: 16px;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .faq-item.open .faq-icon {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .faq-a {
+      font-size: 14px;
+      line-height: 1.9;
+      color: rgba(245,240,235,0.65);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+      padding-bottom: 24px;
+    }
+
+    /* ─── CTA ─── */
+    .cta-section {
+      padding: 160px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(232,69,30,0.15) 0%, transparent 70%);
+    }
+
+    .cta-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(48px, 7vw, 100px);
+      line-height: 1;
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .cta-section p {
+      font-size: 16px;
+      color: rgba(245,240,235,0.6);
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .cta-form {
+      display: flex;
+      gap: 0;
+      max-width: 480px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .cta-input {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-right: none;
+      color: var(--white);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 14px;
+      padding: 16px 20px;
+      outline: none;
+      border-radius: 2px 0 0 2px;
+    }
+
+    .cta-input::placeholder { color: var(--muted); }
+    .cta-input:focus { border-color: var(--accent); }
+
+    .cta-btn {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 16px 28px;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      cursor: pointer;
+      border-radius: 0 2px 2px 0;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+
+    .cta-btn:hover { opacity: 0.85; }
+
+    .cta-note {
+      margin-top: 16px;
+      font-size: 12px;
+      color: var(--muted);
+      position: relative;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 40px 48px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer .logo { font-size: 22px; }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.3; }
+      50%       { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      header { padding: 16px 20px; }
+      nav { display: none; }
+      .hero, .pain, .features, .pricing, .voice, .faq, .cta-section { padding-left: 20px; padding-right: 20px; }
+      .features-grid { grid-template-columns: 1fr; }
+      footer { padding: 32px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="#" class="logo">FOR<span>G</span>ED</a>
+  <nav>
+    <a href="#features">特徴</a>
+    <a href="#pricing">料金</a>
+    <a href="#voice">お客様の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact" class="header-cta">無料体験</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-number">01</div>
+  <div class="hero-content">
+    <span class="hero-tag">名古屋・栄 パーソナルジム</span>
+    <h1>YOUR BODY,<em>REFORGED.</em></h1>
+    <p class="hero-sub">ただ痩せるだけじゃない。<br>あなた本来の力を引き出す、完全個別プログラム。<br>マンツーマンで、確実に変わる。</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">無料体験を予約する</a>
+      <span class="hero-note">▶ 体験料 完全無料</span>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain" id="pain">
+  <p class="section-label reveal">こんな悩みはありませんか</p>
+  <h2 class="reveal">一人では<br>限界がある。</h2>
+  <div class="pain-grid">
+    <div class="pain-item reveal">
+      <div class="pain-num">01</div>
+      <p>ジムに通い続けているのに、体型が変わらない。何が間違っているのか分からない。</p>
+    </div>
+    <div class="pain-item reveal">
+      <div class="pain-num">02</div>
+      <p>食事制限を頑張っても体重が落ちない。リバウンドを繰り返してしまう。</p>
+    </div>
+    <div class="pain-item reveal">
+      <div class="pain-num">03</div>
+      <p>正しいフォームが分からず、怪我が不安。継続する自信もない。</p>
+    </div>
+    <div class="pain-item reveal">
+      <div class="pain-num">04</div>
+      <p>忙しくて時間が取れない。効率よく結果を出せる方法を知りたい。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-header">
+    <div>
+      <p class="section-label reveal">FORGEDが選ばれる理由</p>
+      <h2 class="reveal">3つの<br>強み</h2>
+    </div>
+    <p class="features-desc reveal">科学的根拠に基づいたトレーニングと、あなただけのプログラム設計。結果にコミットします。</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="24" cy="24" r="20"/>
+        <path d="M24 14v10l6 6"/>
+      </svg>
+      <h3>完全オーダーメイド</h3>
+      <p>体組成・生活習慣・目標をヒアリングし、あなただけのプログラムを設計。一般的なメニューは使いません。</p>
+    </div>
+    <div class="feature-card reveal">
+      <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M8 38l10-10 8 8 14-18"/>
+        <circle cx="24" cy="12" r="4"/>
+      </svg>
+      <h3>データで管理する結果</h3>
+      <p>毎回の体重・体脂肪・筋肉量をデータ化。数値で変化を実感しながら、最短ルートで目標へ。</p>
+    </div>
+    <div class="feature-card reveal">
+      <svg class="feature-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M24 6l4 8 9 1.5-6.5 6.5 1.5 9L24 27l-8 4 1.5-9L11 15.5l9-1.5z"/>
+      </svg>
+      <h3>トレーニング外もサポート</h3>
+      <p>食事アドバイス・LINEサポート付き。セッション以外の時間も、あなたの変化を全力で支えます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <p class="section-label reveal" style="text-align:center">料金プラン</p>
+  <h2 class="reveal">PLANS</h2>
+  <p class="pricing-sub reveal">全プラン、無料体験セッション付き</p>
+  <div class="pricing-grid">
+    <div class="plan reveal">
+      <div class="plan-name">STARTER</div>
+      <div class="plan-price">¥38,<span>000</span></div>
+      <div class="plan-period">/ 月（週1回・4回）</div>
+      <ul class="plan-features">
+        <li>マンツーマンセッション 4回</li>
+        <li>初回カウンセリング</li>
+        <li>食事アドバイス</li>
+        <li>LINEサポート（平日）</li>
+      </ul>
+      <a href="#contact" class="btn-plan">このプランで体験</a>
+    </div>
+    <div class="plan featured reveal">
+      <div class="plan-badge">人気 No.1</div>
+      <div class="plan-name">STANDARD</div>
+      <div class="plan-price">¥68,<span>000</span></div>
+      <div class="plan-period">/ 月（週2回・8回）</div>
+      <ul class="plan-features">
+        <li>マンツーマンセッション 8回</li>
+        <li>初回カウンセリング</li>
+        <li>専用食事管理プログラム</li>
+        <li>LINEサポート（毎日）</li>
+        <li>月次ボディチェック</li>
+      </ul>
+      <a href="#contact" class="btn-plan">このプランで体験</a>
+    </div>
+    <div class="plan reveal">
+      <div class="plan-name">PREMIUM</div>
+      <div class="plan-price">¥98,<span>000</span></div>
+      <div class="plan-period">/ 月（週3回・12回）</div>
+      <ul class="plan-features">
+        <li>マンツーマンセッション 12回</li>
+        <li>全プラン内容 すべて含む</li>
+        <li>サプリメント指導</li>
+        <li>優先予約・時間外対応</li>
+        <li>写真撮影・記録サービス</li>
+      </ul>
+      <a href="#contact" class="btn-plan">このプランで体験</a>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="voice" id="voice">
+  <p class="section-label reveal">お客様の声</p>
+  <h2 class="reveal">RESULTS &<br>REVIEWS</h2>
+  <div class="voice-grid">
+    <div class="voice-card reveal">
+      <p class="voice-text">3ヶ月で体脂肪率が8%落ちました。他のジムでは結果が出なかったのに、食事の見直しから一緒に取り組んでくれて、本当に変われました。</p>
+      <div class="voice-meta">
+        <div class="voice-avatar">T</div>
+        <div>
+          <div class="voice-name">田中 さん（32歳・会社員）</div>
+          <div class="voice-info">STANDARDプラン / 3ヶ月継続中</div>
+        </div>
+      </div>
+    </div>
+    <div class="voice-card reveal">
+      <p class="voice-text">産後の体型が気になっていましたが、子どもが小さくて時間が取れず…。週1回から始められて、LINEで毎日相談できるのが心強かったです。</p>
+      <div class="voice-meta">
+        <div class="voice-avatar">S</div>
+        <div>
+          <div class="voice-name">佐藤 さん（28歳・主婦）</div>
+          <div class="voice-info">STARTERプラン / 4ヶ月継続中</div>
+        </div>
+      </div>
+    </div>
+    <div class="voice-card reveal">
+      <p class="voice-text">筋トレ歴5年なのに伸び悩んでいました。フォームを根本から見直してもらったら、3週間でベンチプレスが20kg伸びました。衝撃です。</p>
+      <div class="voice-meta">
+        <div class="voice-avatar">Y</div>
+        <div>
+          <div class="voice-name">山田 さん（25歳・学生）</div>
+          <div class="voice-info">PREMIUMプラン / 2ヶ月継続中</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <p class="section-label reveal">よくある質問</p>
+  <h2 class="reveal">FAQ</h2>
+  <div class="faq-list">
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        運動が初めてでも大丈夫ですか？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">もちろん大丈夫です。現在の体力・経験レベルに合わせてプログラムを設計します。無理のないペースで、確実にステップアップしていきましょう。</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        食事制限は厳しいですか？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">極端な食事制限はしません。生活スタイルや好みに合わせた、続けられる食事管理をご提案します。外食も禁止しません。</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        セッションの場所はどこですか？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">名古屋市中区栄（地下鉄栄駅 徒歩3分）の完全個室スタジオです。他のお客様と顔を合わせることなく、集中してトレーニングできます。</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        途中でプランを変更できますか？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">月の切り替えタイミングであれば、いつでもプラン変更が可能です。目標や生活の変化に合わせて柔軟に対応します。</div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">
+        無料体験で何をするのですか？
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">カウンセリング（目標・現状確認）＋実際のトレーニング体験（約90分）を行います。入会の義務は一切ありません。まずは気軽にご参加ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2 class="reveal">START YOUR<br>TRANSFORMATION.</h2>
+  <p class="reveal">まず一歩。無料体験で、あなたの可能性を確かめてください。</p>
+  <div class="cta-form reveal">
+    <input type="email" class="cta-input" placeholder="メールアドレスを入力">
+    <button class="cta-btn">無料体験を予約</button>
+  </div>
+  <p class="cta-note reveal">※ 返信は24時間以内。キャンセルはいつでも可能です。</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="logo">FOR<span>G</span>ED</a>
+  <p class="footer-copy">© 2025 FORGED Personal Training Gym. All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      document.querySelectorAll('.faq-icon').forEach(i => i.textContent = '+');
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.querySelector('.faq-icon').textContent = '−';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
