@@ -3,471 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PIVOT | あなたの知識を収入に変えるオンライン講座</title>
+  <title>PIVOT | AIを活用した副業・フリーランス養成オンライン講座</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #0d1b2a;
-      --navy2: #1b2d42;
-      --blue: #2563eb;
-      --blue-light: #3b82f6;
-      --sky: #e0f0ff;
-      --white: #ffffff;
-      --off: #f4f7fb;
-      --text: #1e293b;
-      --muted: #64748b;
-      --border: rgba(37,99,235,0.12);
-      --gold: #f59e0b;
+      --navy: #0d1b2a; --navy2: #152436; --blue: #2563eb; --blue2: #1d4ed8;
+      --blue-light: #3b82f6; --white: #ffffff; --off: #f4f7fb;
+      --text: #1e293b; --muted: #64748b; --border: rgba(37,99,235,0.12); --gold: #f59e0b;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--white);
-      color: var(--text);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 300;
-      overflow-x: hidden;
-    }
+    body { background: var(--white); color: var(--text); font-family: 'Noto Sans JP', sans-serif; font-weight: 300; overflow-x: hidden; }
 
-    /* ── HEADER ── */
-    header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 0 52px; height: 68px;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px; letter-spacing: 4px; color: var(--navy);
-      text-decoration: none;
-    }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; padding: 0 52px; height: 68px; background: rgba(255,255,255,.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: 4px; color: var(--navy); text-decoration: none; }
     .logo em { font-style: italic; color: var(--blue); }
     nav { display: flex; align-items: center; gap: 4px; }
-    nav a {
-      color: var(--muted); text-decoration: none;
-      font-size: 12px; letter-spacing: 1.5px;
-      padding: 8px 14px; transition: color 0.2s;
-    }
+    nav a { color: var(--muted); text-decoration: none; font-size: 11px; letter-spacing: 1.5px; padding: 8px 14px; transition: color .2s; }
     nav a:hover { color: var(--blue); }
-    .nav-cta {
-      background: var(--blue); color: var(--white) !important;
-      padding: 10px 24px !important; font-size: 12px !important;
-      font-weight: 500 !important; letter-spacing: 1px !important;
-      border-radius: 4px; transition: background 0.2s !important;
-    }
-    .nav-cta:hover { background: var(--blue-light) !important; }
+    .nav-cta { background: var(--blue); color: var(--white) !important; padding: 10px 24px !important; font-size: 11px !important; font-weight: 500 !important; border-radius: 4px; }
+    .nav-cta:hover { background: var(--blue2) !important; }
 
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh; padding: 140px 64px 100px;
-      position: relative; overflow: hidden;
-      display: flex; align-items: center;
-    }
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: url('img/hero.jpg') center / cover no-repeat,
-                  linear-gradient(135deg, #0d1b2a 0%, #1b3a5c 50%, #0d2d4a 100%);
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(
-        105deg,
-        rgba(13,27,42,0.93) 0%,
-        rgba(13,27,42,0.85) 50%,
-        rgba(13,27,42,0.55) 100%
-      );
-    }
-    .hero-grid-lines {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-    }
+    /* HERO - full bg */
+    .hero { min-height: 100vh; padding: 140px 64px 100px; position: relative; overflow: hidden; display: flex; align-items: center; }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1800&q=85') center / cover no-repeat; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(105deg, rgba(13,27,42,.95) 0%, rgba(13,27,42,.85) 50%, rgba(13,27,42,.6) 100%); }
+    .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 56px 56px; }
     .hero-content { position: relative; z-index: 2; max-width: 680px; }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(37,99,235,0.2); border: 1px solid rgba(37,99,235,0.4);
-      color: #93c5fd; font-size: 11px; letter-spacing: 2px;
-      padding: 7px 16px; margin-bottom: 28px; border-radius: 2px;
-      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
-    }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(37,99,235,.2); border: 1px solid rgba(37,99,235,.4); color: #93c5fd; font-size: 11px; letter-spacing: 2px; padding: 7px 16px; margin-bottom: 28px; border-radius: 2px; opacity: 0; animation: fadeUp .7s .2s forwards; }
     .hero-badge-dot { width: 6px; height: 6px; background: var(--blue-light); border-radius: 50%; animation: blink 2s infinite; }
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(48px, 6vw, 80px);
-      line-height: 1.1; color: var(--white); font-weight: 400;
-      opacity: 0; animation: fadeUp 0.7s 0.4s forwards;
-    }
+    .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(48px, 6.5vw, 84px); line-height: 1.08; color: var(--white); font-weight: 400; opacity: 0; animation: fadeUp .7s .4s forwards; }
     .hero h1 em { font-style: italic; color: #93c5fd; }
-    .hero-copy {
-      margin-top: 24px; font-size: 15px; line-height: 1.9;
-      color: rgba(255,255,255,0.7); max-width: 500px;
-      opacity: 0; animation: fadeUp 0.7s 0.6s forwards;
-    }
-    .hero-proof {
-      display: flex; gap: 32px; margin-top: 40px;
-      padding: 24px 0; border-top: 1px solid rgba(255,255,255,0.1);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      opacity: 0; animation: fadeUp 0.7s 0.75s forwards;
-    }
-    .hero-proof-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 36px; color: var(--white); line-height: 1;
-    }
+    .hero-copy { margin-top: 24px; font-size: 15px; line-height: 1.9; color: rgba(255,255,255,.65); max-width: 500px; opacity: 0; animation: fadeUp .7s .6s forwards; }
+    .hero-proof { display: flex; gap: 36px; margin-top: 40px; padding: 24px 0; border-top: 1px solid rgba(255,255,255,.1); border-bottom: 1px solid rgba(255,255,255,.1); opacity: 0; animation: fadeUp .7s .75s forwards; }
+    .hero-proof-num { font-family: 'DM Serif Display', serif; font-size: 38px; color: var(--white); line-height: 1; }
     .hero-proof-num span { font-size: 16px; font-family: 'Noto Sans JP', sans-serif; }
-    .hero-proof-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; letter-spacing: 1px; }
-    .hero-actions {
-      display: flex; align-items: center; gap: 20px; margin-top: 36px;
-      opacity: 0; animation: fadeUp 0.7s 0.9s forwards;
-    }
-    .btn-main {
-      background: var(--blue); color: var(--white);
-      padding: 16px 40px; font-size: 14px; font-weight: 500;
-      letter-spacing: 1px; text-decoration: none; border-radius: 4px;
-      transition: all 0.25s; display: inline-block;
-    }
-    .btn-main:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.4); }
-    .btn-outline {
-      color: rgba(255,255,255,0.8); text-decoration: none; font-size: 13px;
-      border: 1px solid rgba(255,255,255,0.25); padding: 15px 28px;
-      border-radius: 4px; transition: all 0.2s; letter-spacing: 0.5px;
-    }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.6); color: var(--white); }
+    .hero-proof-label { font-size: 10px; color: rgba(255,255,255,.45); margin-top: 4px; letter-spacing: 1px; }
+    .hero-actions { display: flex; align-items: center; gap: 20px; margin-top: 36px; opacity: 0; animation: fadeUp .7s .9s forwards; }
+    .btn-main { background: var(--blue); color: var(--white); padding: 16px 40px; font-size: 14px; font-weight: 500; letter-spacing: 1px; text-decoration: none; border-radius: 4px; transition: all .25s; display: inline-block; }
+    .btn-main:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,.45); }
+    .btn-outline { color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; border: 1px solid rgba(255,255,255,.2); padding: 15px 28px; border-radius: 4px; transition: all .2s; }
+    .btn-outline:hover { border-color: rgba(255,255,255,.5); color: var(--white); }
 
-    /* ── STRIP ── */
-    .strip { background: var(--navy); display: flex; overflow: hidden; }
-    .strip-item {
-      flex: 1; padding: 16px 24px;
-      display: flex; align-items: center; gap: 10px;
-      border-right: 1px solid rgba(255,255,255,0.08);
-      font-size: 12px; color: rgba(255,255,255,0.7);
-      letter-spacing: 0.5px;
-    }
+    /* STRIP */
+    .strip { background: var(--navy2); display: flex; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .strip-item { flex: 1; padding: 14px 20px; display: flex; align-items: center; gap: 10px; border-right: 1px solid rgba(255,255,255,.06); font-size: 12px; color: rgba(255,255,255,.6); letter-spacing: .5px; }
     .strip-item:last-child { border-right: none; }
-    .strip-icon { color: var(--blue-light); font-size: 16px; flex-shrink: 0; }
+    .strip-check { color: var(--blue-light); font-weight: 700; flex-shrink: 0; }
 
-    /* ── COMMON ── */
-    .sec-label {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 16px; font-weight: 500;
-    }
+    /* COMMON */
+    .sec-label { display: inline-flex; align-items: center; gap: 10px; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; font-weight: 500; }
     .sec-label::before { content: ''; width: 24px; height: 2px; background: var(--blue); }
-    .sec-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(36px, 4vw, 56px);
-      font-weight: 400; line-height: 1.15; color: var(--navy);
-    }
+    .sec-title { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 4.5vw, 60px); font-weight: 400; line-height: 1.1; color: var(--navy); }
     .sec-title em { font-style: italic; color: var(--blue); }
-    .reveal {
-      opacity: 0; transform: translateY(24px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
     .reveal.visible { opacity: 1; transform: none; }
 
-    /* ── PAIN ── */
-    .pain { padding: 100px 64px; background: var(--off); }
-    .pain-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 3px; margin-top: 52px; max-width: 800px;
-    }
-    .pain-card {
-      background: var(--white); padding: 32px 28px;
-      border-left: 3px solid #e2e8f0;
-      transition: border-color 0.3s;
-    }
-    .pain-card:hover { border-left-color: var(--blue); }
-    .pain-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 40px; color: rgba(37,99,235,0.12); line-height: 1; margin-bottom: 10px;
-    }
-    .pain-card p { font-size: 14px; line-height: 1.9; color: var(--muted); }
+    /* PAIN - with bg */
+    .pain { padding: 100px 64px; position: relative; overflow: hidden; }
+    .pain-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=1600&q=80') center / cover no-repeat; filter: brightness(.07) saturate(.4); }
+    .pain-inner { position: relative; z-index: 2; }
+    .pain-inner .sec-label { color: #93c5fd; }
+    .pain-inner .sec-label::before { background: #93c5fd; }
+    .pain-inner .sec-title { color: var(--white); }
+    .pain-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 3px; margin-top: 52px; max-width: 840px; }
+    .pain-card { background: rgba(255,255,255,.05); backdrop-filter: blur(6px); padding: 32px 28px; border-left: 3px solid rgba(37,99,235,.2); transition: border-color .3s; }
+    .pain-card:hover { border-left-color: var(--blue-light); }
+    .pain-num { font-family: 'DM Serif Display', serif; font-size: 42px; color: rgba(37,99,235,.2); line-height: 1; margin-bottom: 10px; }
+    .pain-card p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,.7); }
 
-    /* ── FEATURES ── */
-    .features { padding: 100px 64px; }
-    .features-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 3px; margin-top: 52px;
-    }
-    .feature-card {
-      background: var(--off); padding: 40px 32px;
-      border-top: 3px solid transparent;
-      transition: border-color 0.3s, transform 0.3s;
-      position: relative;
-    }
+    /* FEATURES - with bg */
+    .features { padding: 100px 64px; position: relative; overflow: hidden; }
+    .features-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55e?w=1600&q=80') center / cover no-repeat; filter: brightness(.08) saturate(.4); }
+    .features-inner { position: relative; z-index: 2; }
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-top: 52px; }
+    .feature-card { background: rgba(255,255,255,.06); backdrop-filter: blur(8px); border: 1px solid rgba(37,99,235,.15); padding: 40px 32px; border-top: 3px solid transparent; transition: border-top-color .3s, transform .3s; position: relative; }
     .feature-card:hover { border-top-color: var(--blue); transform: translateY(-4px); }
-    .feature-num {
-      position: absolute; top: 20px; right: 24px;
-      font-family: 'DM Serif Display', serif;
-      font-size: 52px; color: rgba(37,99,235,0.06); line-height: 1;
-    }
-    .feature-icon { font-size: 32px; margin-bottom: 20px; }
-    .feature-card h3 {
-      font-size: 17px; font-weight: 700; color: var(--navy);
-      margin-bottom: 12px; line-height: 1.4;
-    }
-    .feature-card p { font-size: 13px; line-height: 1.9; color: var(--muted); }
+    .feature-num { position: absolute; top: 16px; right: 20px; font-family: 'DM Serif Display', serif; font-size: 56px; color: rgba(37,99,235,.08); line-height: 1; }
+    .feature-card h3 { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 12px; line-height: 1.4; }
+    .feature-card p { font-size: 13px; line-height: 1.9; color: rgba(255,255,255,.55); }
 
-    /* ── CURRICULUM ── */
+    /* CURRICULUM - dark */
     .curriculum { padding: 100px 64px; background: var(--navy); }
     .curriculum .sec-label { color: #93c5fd; }
     .curriculum .sec-label::before { background: #93c5fd; }
     .curriculum .sec-title { color: var(--white); }
-    .curriculum .sec-title em { color: #93c5fd; }
-    .curriculum-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr);
-      gap: 3px; margin-top: 52px;
-    }
-    .lesson-card {
-      background: rgba(255,255,255,0.04); padding: 32px 28px;
-      border: 1px solid rgba(255,255,255,0.07);
-      display: flex; gap: 20px; align-items: flex-start;
-      transition: background 0.3s, border-color 0.3s;
-    }
-    .lesson-card:hover { background: rgba(255,255,255,0.07); border-color: rgba(37,99,235,0.4); }
-    .lesson-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 28px; color: var(--blue-light);
-      line-height: 1; flex-shrink: 0; width: 40px;
-    }
-    .lesson-body { }
-    .lesson-tag {
-      display: inline-block; background: rgba(37,99,235,0.2);
-      color: #93c5fd; font-size: 9px; letter-spacing: 2px;
-      padding: 3px 10px; margin-bottom: 8px; font-weight: 500;
-    }
+    .curriculum-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 3px; margin-top: 52px; }
+    .lesson-card { background: rgba(255,255,255,.04); padding: 32px 28px; border: 1px solid rgba(255,255,255,.07); display: flex; gap: 20px; align-items: flex-start; transition: background .3s, border-color .3s; }
+    .lesson-card:hover { background: rgba(255,255,255,.07); border-color: rgba(37,99,235,.35); }
+    .lesson-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--blue-light); line-height: 1; flex-shrink: 0; width: 36px; }
+    .lesson-tag { display: inline-block; background: rgba(37,99,235,.2); color: #93c5fd; font-size: 9px; letter-spacing: 2px; padding: 3px 10px; margin-bottom: 8px; font-weight: 500; }
     .lesson-title { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
-    .lesson-desc { font-size: 12px; line-height: 1.8; color: rgba(255,255,255,0.5); }
+    .lesson-desc { font-size: 12px; line-height: 1.8; color: rgba(255,255,255,.45); }
 
-    /* ── PRICING ── */
-    .pricing { padding: 100px 64px; background: var(--off); }
-    .pricing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 3px; margin-top: 52px; max-width: 1000px;
-    }
-    .plan {
-      background: var(--white); padding: 40px 32px;
-      border: 1px solid #e2e8f0; transition: border-color 0.3s;
-      position: relative;
-    }
-    .plan:hover { border-color: rgba(37,99,235,0.3); }
-    .plan.featured { background: var(--navy); border-color: var(--navy); }
-    .plan-recommend {
-      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
-      background: var(--blue); color: var(--white);
-      font-size: 10px; font-weight: 700; letter-spacing: 2px;
-      padding: 5px 16px; white-space: nowrap; border-radius: 0 0 4px 4px;
-    }
-    .plan-tier { font-size: 11px; letter-spacing: 3px; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; }
-    .plan.featured .plan-tier { color: rgba(255,255,255,0.45); }
-    .plan-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 24px; color: var(--navy); margin-bottom: 6px;
-    }
-    .plan.featured .plan-name { color: var(--white); }
-    .plan-price {
-      font-family: 'DM Serif Display', serif;
-      font-size: 56px; line-height: 1; color: var(--blue); margin-bottom: 4px;
-    }
-    .plan.featured .plan-price { color: #93c5fd; }
+    /* PRICING - with bg */
+    .pricing { padding: 100px 64px; position: relative; overflow: hidden; }
+    .pricing-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1600&q=80') center / cover no-repeat; filter: brightness(.07) saturate(.4); }
+    .pricing-inner { position: relative; z-index: 2; }
+    .pricing-note { font-size: 13px; color: rgba(255,255,255,.5); margin: 12px 0 52px; }
+    .pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; max-width: 1000px; }
+    .plan { background: rgba(13,27,42,.92); backdrop-filter: blur(8px); padding: 40px 32px; border: 1px solid rgba(255,255,255,.08); transition: border-color .3s; position: relative; }
+    .plan:hover { border-color: rgba(37,99,235,.3); }
+    .plan.featured { background: var(--blue); border-color: var(--blue); }
+    .plan-recommend { position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--white); color: var(--blue); font-size: 9px; font-weight: 700; letter-spacing: 2px; padding: 5px 16px; white-space: nowrap; border-radius: 0 0 4px 4px; }
+    .plan-tier { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.4); margin-bottom: 14px; text-transform: uppercase; }
+    .plan-name { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--white); margin-bottom: 6px; }
+    .plan-price { font-family: 'DM Serif Display', serif; font-size: 56px; line-height: 1; color: var(--blue-light); }
+    .plan.featured .plan-price { color: var(--white); }
     .plan-price sup { font-size: 22px; vertical-align: super; }
-    .plan-period { font-size: 11px; color: var(--muted); margin-bottom: 24px; }
-    .plan.featured .plan-period { color: rgba(255,255,255,0.4); }
-    .plan-divider { height: 1px; background: #e2e8f0; margin-bottom: 20px; }
-    .plan.featured .plan-divider { background: rgba(255,255,255,0.1); }
-    .plan-items { list-style: none; margin-bottom: 32px; }
-    .plan-items li {
-      font-size: 13px; padding: 9px 0;
-      border-bottom: 1px solid #f1f5f9;
-      display: flex; align-items: flex-start; gap: 10px; color: var(--text); line-height: 1.5;
-    }
-    .plan.featured .plan-items li { border-bottom-color: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); }
-    .plan-items li::before { content: '✓'; color: var(--blue); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-    .plan.featured .plan-items li::before { color: #93c5fd; }
-    .plan-btn {
-      display: block; text-align: center; padding: 14px;
-      font-size: 13px; font-weight: 500; letter-spacing: 1px;
-      text-decoration: none; border-radius: 4px; transition: all 0.2s;
-    }
-    .plan:not(.featured) .plan-btn { border: 1px solid rgba(37,99,235,0.3); color: var(--blue); }
+    .plan-period { font-size: 11px; color: rgba(255,255,255,.4); margin: 6px 0 22px; }
+    .plan-divider { height: 1px; background: rgba(255,255,255,.1); margin-bottom: 20px; }
+    .plan-items { list-style: none; margin-bottom: 28px; }
+    .plan-items li { font-size: 13px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.07); display: flex; align-items: flex-start; gap: 10px; color: rgba(255,255,255,.75); line-height: 1.5; }
+    .plan-items li::before { content: '✓'; color: var(--blue-light); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .plan.featured .plan-items li::before { color: rgba(255,255,255,.9); }
+    .plan-btn { display: block; text-align: center; padding: 14px; font-size: 12px; font-weight: 500; letter-spacing: 1px; text-decoration: none; border-radius: 4px; transition: all .2s; }
+    .plan:not(.featured) .plan-btn { border: 1px solid rgba(37,99,235,.3); color: var(--blue-light); }
     .plan:not(.featured) .plan-btn:hover { background: var(--blue); color: var(--white); border-color: var(--blue); }
-    .plan.featured .plan-btn { background: var(--blue); color: var(--white); }
-    .plan.featured .plan-btn:hover { background: var(--blue-light); }
+    .plan.featured .plan-btn { background: var(--white); color: var(--blue); }
+    .plan.featured .plan-btn:hover { background: var(--navy); color: var(--white); }
 
-    /* ── FLOW ── */
-    .flow { padding: 100px 64px; }
-    .flow-steps {
-      display: grid; grid-template-columns: repeat(5, 1fr);
-      gap: 0; margin-top: 52px; position: relative;
-    }
-    .flow-steps::before {
-      content: ''; position: absolute; top: 28px; left: 10%; right: 10%;
-      height: 2px; background: linear-gradient(to right, var(--blue), var(--blue-light));
-      z-index: 0;
-    }
-    .flow-step {
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 0 12px; position: relative; z-index: 1;
-    }
-    .flow-circle {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: var(--white); border: 2px solid var(--blue);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 20px; margin-bottom: 20px;
-      box-shadow: 0 0 0 4px rgba(37,99,235,0.1);
-    }
-    .flow-step-num { font-size: 10px; letter-spacing: 2px; color: var(--blue); margin-bottom: 8px; font-weight: 500; }
+    /* FLOW */
+    .flow { padding: 100px 64px; background: var(--off); }
+    .flow-steps { display: grid; grid-template-columns: repeat(5,1fr); margin-top: 52px; position: relative; }
+    .flow-steps::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, var(--blue), var(--blue-light)); z-index: 0; }
+    .flow-step { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 0 12px; position: relative; z-index: 1; }
+    .flow-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--white); border: 2px solid var(--blue); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; box-shadow: 0 0 0 4px rgba(37,99,235,.08); font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--blue); }
+    .flow-step-num { font-size: 9px; letter-spacing: 2px; color: var(--blue); margin-bottom: 8px; font-weight: 500; }
     .flow-step-title { font-size: 13px; font-weight: 700; margin-bottom: 8px; color: var(--navy); line-height: 1.4; }
     .flow-step-desc { font-size: 11px; color: var(--muted); line-height: 1.7; }
-    .flow-step-time {
-      display: inline-block; margin-top: 10px;
-      font-size: 10px; color: var(--blue); letter-spacing: 1px;
-      background: rgba(37,99,235,0.08); padding: 3px 10px; border-radius: 20px;
-    }
+    .flow-step-time { display: inline-block; margin-top: 10px; font-size: 10px; color: var(--blue); background: rgba(37,99,235,.07); padding: 3px 10px; border-radius: 20px; }
 
-    /* ── VOICE ── */
-    .voice { padding: 100px 64px; background: var(--off); }
-    .voice-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 3px; margin-top: 52px;
-    }
-    .voice-card {
-      background: var(--white); padding: 36px 28px;
-      border: 1px solid #e2e8f0; transition: box-shadow 0.3s;
-    }
-    .voice-card:hover { box-shadow: 0 8px 32px rgba(37,99,235,0.08); }
-    .voice-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 16px; }
-    .voice-result {
-      display: inline-block; background: rgba(37,99,235,0.08);
-      color: var(--blue); font-size: 11px; font-weight: 500;
-      padding: 5px 14px; margin-bottom: 16px; border-radius: 2px;
-    }
-    .voice-text { font-size: 13px; line-height: 2; color: var(--muted); margin-bottom: 24px; }
+    /* VOICE - with bg */
+    .voice { padding: 100px 64px; position: relative; overflow: hidden; }
+    .voice-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&q=80') center / cover no-repeat; filter: brightness(.08) saturate(.4); }
+    .voice-inner { position: relative; z-index: 2; }
+    .voice-inner .sec-label { color: #93c5fd; }
+    .voice-inner .sec-label::before { background: #93c5fd; }
+    .voice-inner .sec-title { color: var(--white); }
+    .voice-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 3px; margin-top: 52px; }
+    .voice-card { background: rgba(13,27,42,.85); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,.08); padding: 36px 28px; transition: border-color .3s; }
+    .voice-card:hover { border-color: rgba(37,99,235,.3); }
+    .voice-stars { color: var(--gold); font-size: 13px; letter-spacing: 2px; margin-bottom: 14px; }
+    .voice-result { display: inline-block; background: rgba(37,99,235,.15); color: #93c5fd; font-size: 11px; font-weight: 500; padding: 5px 14px; margin-bottom: 16px; border-radius: 2px; }
+    .voice-text { font-size: 13px; line-height: 2; color: rgba(255,255,255,.7); margin-bottom: 24px; }
     .voice-person { display: flex; align-items: center; gap: 14px; }
-    .voice-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--blue), var(--blue-light));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 700; color: var(--white); flex-shrink: 0;
-    }
-    .voice-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 2px; }
-    .voice-meta { font-size: 11px; color: var(--muted); }
+    .voice-avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--blue-light)); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--white); flex-shrink: 0; }
+    .voice-name { font-size: 13px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+    .voice-meta { font-size: 11px; color: rgba(255,255,255,.45); }
 
-    /* ── FAQ ── */
-    .faq { padding: 100px 64px; }
+    /* FAQ */
+    .faq { padding: 100px 64px; background: var(--off); }
     .faq-inner { display: grid; grid-template-columns: 280px 1fr; gap: 80px; margin-top: 52px; }
     .faq-side-text { font-size: 13px; line-height: 2; color: var(--muted); margin-top: 16px; }
-    .faq-contact {
-      display: inline-block; margin-top: 24px;
-      background: var(--blue); color: var(--white);
-      font-size: 12px; padding: 12px 24px; border-radius: 4px;
-      text-decoration: none; transition: background 0.2s;
-    }
-    .faq-contact:hover { background: var(--blue-light); }
-    .faq-item { border-bottom: 1px solid #f1f5f9; }
-    .faq-q {
-      width: 100%; background: none; border: none;
-      font-family: 'Noto Sans JP', sans-serif;
-      color: var(--navy); font-size: 14px; font-weight: 500;
-      text-align: left; padding: 22px 0; cursor: pointer;
-      display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    }
+    .faq-contact { display: inline-block; margin-top: 24px; background: var(--blue); color: var(--white); font-size: 12px; padding: 12px 24px; border-radius: 4px; text-decoration: none; transition: background .2s; }
+    .faq-contact:hover { background: var(--blue2); }
+    .faq-item { border-bottom: 1px solid #e2e8f0; }
+    .faq-q { width: 100%; background: none; border: none; font-family: 'Noto Sans JP', sans-serif; color: var(--navy); font-size: 14px; font-weight: 500; text-align: left; padding: 22px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
     .faq-q-inner { display: flex; align-items: flex-start; gap: 12px; }
-    .faq-q-mark {
-      font-family: 'DM Serif Display', serif;
-      font-size: 18px; color: var(--blue); flex-shrink: 0; line-height: 1.4;
-    }
-    .faq-icon {
-      width: 24px; height: 24px; border: 1px solid #e2e8f0;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0; transition: all 0.2s; font-size: 16px; color: var(--blue);
-    }
+    .faq-q-mark { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--blue); flex-shrink: 0; line-height: 1.4; }
+    .faq-icon { width: 24px; height: 24px; border: 1px solid #e2e8f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; font-size: 16px; color: var(--blue); }
     .faq-item.open .faq-icon { background: var(--blue); border-color: var(--blue); color: var(--white); }
-    .faq-a {
-      font-size: 13px; line-height: 2; color: var(--muted);
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.3s; padding-left: 30px;
-    }
+    .faq-a { font-size: 13px; line-height: 2; color: var(--muted); max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s; padding-left: 30px; }
     .faq-item.open .faq-a { max-height: 300px; padding-bottom: 22px; }
 
-    /* ── CTA ── */
-    .cta {
-      padding: 120px 64px; text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .cta-img {
-      position: absolute; inset: 0;
-      background: url('img/cta.jpg') center / cover no-repeat,
-                  linear-gradient(135deg, #0d1b2a 0%, #1b2d42 100%);
-    }
-    .cta-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(13,27,42,0.93) 0%, rgba(13,27,42,0.85) 100%);
-    }
+    /* CTA - with bg */
+    .cta { padding: 120px 64px; text-align: center; position: relative; overflow: hidden; }
+    .cta-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=1800&q=85') center / cover no-repeat; filter: brightness(.2) saturate(.5); }
+    .cta-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,27,42,.92) 0%, rgba(13,27,42,.88) 100%); }
     .cta-inner { position: relative; z-index: 2; }
-    .cta h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(40px, 5.5vw, 72px);
-      font-weight: 400; line-height: 1.2;
-      color: var(--white); margin-bottom: 16px;
-    }
+    .cta h2 { font-family: 'DM Serif Display', serif; font-size: clamp(44px, 6vw, 80px); font-weight: 400; line-height: 1.15; color: var(--white); margin-bottom: 16px; }
     .cta h2 em { font-style: italic; color: #93c5fd; }
-    .cta-sub { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 48px; line-height: 2; }
+    .cta-sub { font-size: 15px; color: rgba(255,255,255,.55); margin-bottom: 48px; line-height: 2; }
     .cta-form { display: flex; max-width: 500px; margin: 0 auto 16px; border-radius: 4px; overflow: hidden; }
-    .cta-input {
-      flex: 1; background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2); border-right: none;
-      color: var(--white); font-family: 'Noto Sans JP', sans-serif;
-      font-size: 14px; padding: 16px 20px; outline: none;
-    }
-    .cta-input::placeholder { color: rgba(255,255,255,0.4); }
-    .cta-input:focus { border-color: var(--blue-light); background: rgba(255,255,255,0.15); }
-    .cta-btn {
-      background: var(--blue); color: var(--white); border: none;
-      padding: 16px 28px; font-family: 'Noto Sans JP', sans-serif;
-      font-size: 13px; font-weight: 500; letter-spacing: 1px;
-      cursor: pointer; transition: background 0.2s; white-space: nowrap;
-    }
+    .cta-input { flex: 1; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-right: none; color: var(--white); font-family: 'Noto Sans JP', sans-serif; font-size: 14px; padding: 16px 20px; outline: none; }
+    .cta-input::placeholder { color: rgba(255,255,255,.35); }
+    .cta-input:focus { border-color: var(--blue-light); }
+    .cta-btn { background: var(--blue); color: var(--white); border: none; padding: 16px 28px; font-family: 'Noto Sans JP', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 1px; cursor: pointer; transition: background .2s; white-space: nowrap; }
     .cta-btn:hover { background: var(--blue-light); }
-    .cta-note { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 12px; }
+    .cta-note { font-size: 12px; color: rgba(255,255,255,.3); margin-top: 12px; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--navy); padding: 52px 64px 28px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-    .footer-top {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      gap: 40px; flex-wrap: wrap;
-      padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 24px;
-    }
-    .footer-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 22px; letter-spacing: 4px;
-      color: var(--white); text-decoration: none; display: block; margin-bottom: 10px;
-    }
+    footer { background: var(--navy); padding: 52px 64px 28px; border-top: 1px solid rgba(255,255,255,.07); }
+    .footer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 40px; flex-wrap: wrap; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.07); margin-bottom: 24px; }
+    .footer-logo { font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: 4px; color: var(--white); text-decoration: none; display: block; margin-bottom: 10px; }
     .footer-logo em { font-style: italic; color: #93c5fd; }
-    .footer-brand p { font-size: 12px; color: rgba(255,255,255,0.35); line-height: 1.8; }
+    .footer-brand p { font-size: 12px; color: rgba(255,255,255,.3); line-height: 1.8; }
     .footer-links { display: flex; gap: 48px; }
-    .footer-col h4 { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,0.3); margin-bottom: 16px; text-transform: uppercase; }
-    .footer-col a {
-      display: block; font-size: 12px; color: rgba(255,255,255,0.5);
-      text-decoration: none; margin-bottom: 10px; transition: color 0.2s;
-    }
+    .footer-col h4 { font-size: 10px; letter-spacing: 3px; color: rgba(255,255,255,.3); margin-bottom: 16px; text-transform: uppercase; }
+    .footer-col a { display: block; font-size: 12px; color: rgba(255,255,255,.5); text-decoration: none; margin-bottom: 10px; transition: color .2s; }
     .footer-col a:hover { color: #93c5fd; }
-    .footer-bottom { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.25); flex-wrap: wrap; gap: 12px; }
+    .footer-bottom { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,.2); flex-wrap: wrap; gap: 12px; }
 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
 
     @media (max-width: 900px) {
       header { padding: 0 20px; }
@@ -500,7 +228,7 @@
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
-  <div class="hero-grid-lines"></div>
+  <div class="hero-grid"></div>
   <div class="hero-content">
     <span class="hero-badge"><span class="hero-badge-dot"></span>受講生 累計 1,200名突破</span>
     <h1>あなたの知識を、<br><em>収入に変える。</em></h1>
@@ -518,44 +246,35 @@
 </section>
 
 <div class="strip">
-  <div class="strip-item"><span class="strip-icon">✓</span>完全オンライン・自分のペースで学習</div>
-  <div class="strip-item"><span class="strip-icon">✓</span>受講中は講師に無制限で質問可能</div>
-  <div class="strip-item"><span class="strip-icon">✓</span>受講生コミュニティへの招待付き</div>
-  <div class="strip-item"><span class="strip-icon">✓</span>案件獲得まで徹底サポート</div>
+  <div class="strip-item"><span class="strip-check">✓</span>完全オンライン・自分のペースで学習</div>
+  <div class="strip-item"><span class="strip-check">✓</span>受講中は講師に無制限で質問可能</div>
+  <div class="strip-item"><span class="strip-check">✓</span>受講生コミュニティへの招待付き</div>
+  <div class="strip-item"><span class="strip-check">✓</span>案件獲得まで徹底サポート</div>
 </div>
 
-<section class="pain" id="pain">
-  <p class="sec-label reveal">こんな悩みはありませんか</p>
-  <h2 class="sec-title reveal">一歩が<br><em>踏み出せない</em>理由。</h2>
-  <div class="pain-grid">
-    <div class="pain-card reveal"><div class="pain-num">01</div><p>副業を始めたいが、何から手をつければいいか分からない。情報が多すぎて混乱している。</p></div>
-    <div class="pain-card reveal"><div class="pain-num">02</div><p>独学で勉強しているが、実際に収益につながる感覚がなく、モチベーションが続かない。</p></div>
-    <div class="pain-card reveal"><div class="pain-num">03</div><p>スキルはある気がするが、どうやってクライアントを見つければいいか分からない。</p></div>
-    <div class="pain-card reveal"><div class="pain-num">04</div><p>本業が忙しく、限られた時間で効率よく稼げるようになりたい。遠回りしたくない。</p></div>
+<section class="pain">
+  <div class="pain-bg"></div>
+  <div class="pain-inner">
+    <p class="sec-label reveal">こんな悩みはありませんか</p>
+    <h2 class="sec-title reveal">一歩が<br><em>踏み出せない</em>理由。</h2>
+    <div class="pain-grid">
+      <div class="pain-card reveal"><div class="pain-num">01</div><p>副業を始めたいが、何から手をつければいいか分からない。情報が多すぎて混乱している。</p></div>
+      <div class="pain-card reveal"><div class="pain-num">02</div><p>独学で勉強しているが、実際に収益につながる感覚がなく、モチベーションが続かない。</p></div>
+      <div class="pain-card reveal"><div class="pain-num">03</div><p>スキルはある気がするが、どうやってクライアントを見つければいいか分からない。</p></div>
+      <div class="pain-card reveal"><div class="pain-num">04</div><p>本業が忙しく、限られた時間で効率よく稼げるようになりたい。遠回りしたくない。</p></div>
+    </div>
   </div>
 </section>
 
 <section class="features" id="features">
-  <p class="sec-label reveal">PIVOTが選ばれる理由</p>
-  <h2 class="sec-title reveal">3つの<em>強み</em></h2>
-  <div class="features-grid">
-    <div class="feature-card reveal">
-      <div class="feature-num">01</div>
-      <div class="feature-icon">🤖</div>
-      <h3>AI活用で学習を最速化</h3>
-      <p>ChatGPT・Claudeを駆使した現場直結のカリキュラム。AIを道具として使いこなすことで、学習時間を従来の1/3に短縮します。</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-num">02</div>
-      <div class="feature-icon">💼</div>
-      <h3>実案件で学ぶ実践形式</h3>
-      <p>架空の課題ではなく、実際のクラウドワークス・ランサーズを使った案件獲得まで一貫してサポート。卒業時には実績が手元に残ります。</p>
-    </div>
-    <div class="feature-card reveal">
-      <div class="feature-num">03</div>
-      <div class="feature-icon">🤝</div>
-      <h3>収益化まで伴走サポート</h3>
-      <p>受講期間中は講師への無制限質問＋専用Slackコミュニティへの招待付き。一人で悩まずに進められる環境を用意しています。</p>
+  <div class="features-bg"></div>
+  <div class="features-inner">
+    <p class="sec-label reveal">PIVOTが選ばれる理由</p>
+    <h2 class="sec-title reveal" style="color:var(--white)">3つの<em>強み</em></h2>
+    <div class="features-grid">
+      <div class="feature-card reveal"><div class="feature-num">01</div><h3>AI活用で学習を最速化</h3><p>ChatGPT・Claudeを駆使した現場直結のカリキュラム。AIを道具として使いこなすことで、学習時間を従来の1/3に短縮します。</p></div>
+      <div class="feature-card reveal"><div class="feature-num">02</div><h3>実案件で学ぶ実践形式</h3><p>架空の課題ではなく、実際のクラウドワークス・ランサーズを使った案件獲得まで一貫してサポート。卒業時には実績が手元に残ります。</p></div>
+      <div class="feature-card reveal"><div class="feature-num">03</div><h3>収益化まで伴走サポート</h3><p>受講期間中は講師への無制限質問＋専用Slackコミュニティへの招待付き。一人で悩まずに進められる環境を用意しています。</p></div>
     </div>
   </div>
 </section>
@@ -564,105 +283,25 @@
   <p class="sec-label reveal">カリキュラム</p>
   <h2 class="sec-title reveal">CURRICULUM</h2>
   <div class="curriculum-grid">
-    <div class="lesson-card reveal">
-      <div class="lesson-num">01</div>
-      <div class="lesson-body">
-        <span class="lesson-tag">WEEK 1–2</span>
-        <div class="lesson-title">副業マインドセットと市場分析</div>
-        <div class="lesson-desc">フリーランスとして稼ぐための思考法。需要のあるスキル・ジャンルの見極め方を学びます。</div>
-      </div>
-    </div>
-    <div class="lesson-card reveal">
-      <div class="lesson-num">02</div>
-      <div class="lesson-body">
-        <span class="lesson-tag">WEEK 3–4</span>
-        <div class="lesson-title">AI活用の基礎と実践</div>
-        <div class="lesson-desc">ChatGPT・Claudeを使った作業効率化。プロンプト設計から納品品質の向上まで。</div>
-      </div>
-    </div>
-    <div class="lesson-card reveal">
-      <div class="lesson-num">03</div>
-      <div class="lesson-body">
-        <span class="lesson-tag">WEEK 5–7</span>
-        <div class="lesson-title">LP・Webコンテンツ制作</div>
-        <div class="lesson-desc">HTML/CSS基礎からLP制作まで。実際に動くポートフォリオを3本作成します。</div>
-      </div>
-    </div>
-    <div class="lesson-card reveal">
-      <div class="lesson-num">04</div>
-      <div class="lesson-body">
-        <span class="lesson-tag">WEEK 8–9</span>
-        <div class="lesson-title">プロフィール・提案文の作成</div>
-        <div class="lesson-desc">受注率を上げるプロフィールの書き方、クライアントの心を動かす提案文テンプレート。</div>
-      </div>
-    </div>
-    <div class="lesson-card reveal">
-      <div class="lesson-num">05</div>
-      <div class="lesson-body">
-        <span class="lesson-tag">WEEK 10–11</span>
-        <div class="lesson-title">初案件獲得・実践演習</div>
-        <div class="lesson-desc">実際に案件に応募し、受注から納品・請求までの一連の流れを体験します。</div>
-      </div>
-    </div>
-    <div class="lesson-card reveal">
-      <div class="lesson-num">06</div>
-      <div class="lesson-body">
-        <span class="lesson-tag">WEEK 12</span>
-        <div class="lesson-title">単価アップ・継続案件の獲得</div>
-        <div class="lesson-desc">リピートされるための関係構築術、単価交渉の方法。月収10万円への道筋を設計します。</div>
-      </div>
-    </div>
+    <div class="lesson-card reveal"><div class="lesson-num">01</div><div><span class="lesson-tag">WEEK 1–2</span><div class="lesson-title">副業マインドセットと市場分析</div><div class="lesson-desc">フリーランスとして稼ぐための思考法。需要のあるスキル・ジャンルの見極め方を学びます。</div></div></div>
+    <div class="lesson-card reveal"><div class="lesson-num">02</div><div><span class="lesson-tag">WEEK 3–4</span><div class="lesson-title">AI活用の基礎と実践</div><div class="lesson-desc">ChatGPT・Claudeを使った作業効率化。プロンプト設計から納品品質の向上まで。</div></div></div>
+    <div class="lesson-card reveal"><div class="lesson-num">03</div><div><span class="lesson-tag">WEEK 5–7</span><div class="lesson-title">LP・Webコンテンツ制作</div><div class="lesson-desc">HTML/CSS基礎からLP制作まで。実際に動くポートフォリオを3本作成します。</div></div></div>
+    <div class="lesson-card reveal"><div class="lesson-num">04</div><div><span class="lesson-tag">WEEK 8–9</span><div class="lesson-title">プロフィール・提案文の作成</div><div class="lesson-desc">受注率を上げるプロフィールの書き方、クライアントの心を動かす提案文テンプレート。</div></div></div>
+    <div class="lesson-card reveal"><div class="lesson-num">05</div><div><span class="lesson-tag">WEEK 10–11</span><div class="lesson-title">初案件獲得・実践演習</div><div class="lesson-desc">実際に案件に応募し、受注から納品・請求までの一連の流れを体験します。</div></div></div>
+    <div class="lesson-card reveal"><div class="lesson-num">06</div><div><span class="lesson-tag">WEEK 12</span><div class="lesson-title">単価アップ・継続案件の獲得</div><div class="lesson-desc">リピートされるための関係構築術、単価交渉の方法。月収10万円への道筋を設計します。</div></div></div>
   </div>
 </section>
 
 <section class="pricing" id="pricing">
-  <p class="sec-label reveal">料金プラン</p>
-  <h2 class="sec-title reveal">PLANS</h2>
-  <div class="pricing-grid">
-    <div class="plan reveal">
-      <div class="plan-tier">BASIC</div>
-      <div class="plan-name">ベーシック</div>
-      <div class="plan-price"><sup>¥</sup>49,800</div>
-      <div class="plan-period">3ヶ月 / 一括払い</div>
-      <div class="plan-divider"></div>
-      <ul class="plan-items">
-        <li>全カリキュラム（動画）視聴</li>
-        <li>テキスト・教材一式</li>
-        <li>受講生コミュニティ参加</li>
-        <li>質問フォーム（週3回まで）</li>
-      </ul>
-      <a href="#contact" class="plan-btn">このプランで申し込む</a>
-    </div>
-    <div class="plan featured reveal">
-      <div class="plan-recommend">おすすめ</div>
-      <div class="plan-tier">STANDARD</div>
-      <div class="plan-name">スタンダード</div>
-      <div class="plan-price"><sup>¥</sup>89,800</div>
-      <div class="plan-period">3ヶ月 / 一括払い</div>
-      <div class="plan-divider"></div>
-      <ul class="plan-items">
-        <li>ベーシックの全内容含む</li>
-        <li>講師への無制限質問（Slack）</li>
-        <li>月2回 1on1 フィードバック</li>
-        <li>ポートフォリオレビュー</li>
-        <li>提案文・プロフィール添削</li>
-      </ul>
-      <a href="#contact" class="plan-btn">このプランで申し込む</a>
-    </div>
-    <div class="plan reveal">
-      <div class="plan-tier">PREMIUM</div>
-      <div class="plan-name">プレミアム</div>
-      <div class="plan-price"><sup>¥</sup>148,000</div>
-      <div class="plan-period">6ヶ月 / 一括払い</div>
-      <div class="plan-divider"></div>
-      <ul class="plan-items">
-        <li>スタンダードの全内容含む</li>
-        <li>月4回 1on1 コーチング</li>
-        <li>案件紹介・マッチング支援</li>
-        <li>収益化まで無期限サポート</li>
-        <li>卒業後コミュニティ永年参加</li>
-      </ul>
-      <a href="#contact" class="plan-btn">このプランで申し込む</a>
+  <div class="pricing-bg"></div>
+  <div class="pricing-inner">
+    <p class="sec-label reveal">料金プラン</p>
+    <h2 class="sec-title reveal" style="color:var(--white)">PLANS</h2>
+    <p class="pricing-note reveal">全プラン、無料説明会（30分）参加可 ／ 返金保証あり</p>
+    <div class="pricing-grid">
+      <div class="plan reveal"><div class="plan-tier">BASIC</div><div class="plan-name">ベーシック</div><div class="plan-price"><sup>¥</sup>49,800</div><div class="plan-period">3ヶ月 / 一括払い</div><div class="plan-divider"></div><ul class="plan-items"><li>全カリキュラム（動画）視聴</li><li>テキスト・教材一式</li><li>受講生コミュニティ参加</li><li>質問フォーム（週3回まで）</li></ul><a href="#contact" class="plan-btn">このプランで申し込む</a></div>
+      <div class="plan featured reveal"><div class="plan-recommend">おすすめ</div><div class="plan-tier">STANDARD</div><div class="plan-name">スタンダード</div><div class="plan-price"><sup>¥</sup>89,800</div><div class="plan-period">3ヶ月 / 一括払い</div><div class="plan-divider"></div><ul class="plan-items"><li>ベーシックの全内容含む</li><li>講師への無制限質問（Slack）</li><li>月2回 1on1フィードバック</li><li>ポートフォリオレビュー</li><li>提案文・プロフィール添削</li></ul><a href="#contact" class="plan-btn">このプランで申し込む</a></div>
+      <div class="plan reveal"><div class="plan-tier">PREMIUM</div><div class="plan-name">プレミアム</div><div class="plan-price"><sup>¥</sup>148,000</div><div class="plan-period">6ヶ月 / 一括払い</div><div class="plan-divider"></div><ul class="plan-items"><li>スタンダードの全内容含む</li><li>月4回 1on1コーチング</li><li>案件紹介・マッチング支援</li><li>収益化まで無期限サポート</li><li>卒業後コミュニティ永年参加</li></ul><a href="#contact" class="plan-btn">このプランで申し込む</a></div>
     </div>
   </div>
 </section>
@@ -671,35 +310,23 @@
   <p class="sec-label reveal">受講の流れ</p>
   <h2 class="sec-title reveal">HOW TO START</h2>
   <div class="flow-steps">
-    <div class="flow-step reveal"><div class="flow-circle">📋</div><div class="flow-step-num">STEP 01</div><div class="flow-step-title">無料説明会に参加</div><div class="flow-step-desc">Zoomで30分。講座の内容・サポート体制をご説明します。</div><span class="flow-step-time">約30分</span></div>
-    <div class="flow-step reveal"><div class="flow-circle">💬</div><div class="flow-step-num">STEP 02</div><div class="flow-step-title">個別カウンセリング</div><div class="flow-step-desc">現状・目標をヒアリングし、最適なプランをご提案。</div><span class="flow-step-time">約20分</span></div>
-    <div class="flow-step reveal"><div class="flow-circle">✍️</div><div class="flow-step-num">STEP 03</div><div class="flow-step-title">お申し込み・決済</div><div class="flow-step-desc">フォームから申し込み完了。分割払いも対応しています。</div><span class="flow-step-time">5分</span></div>
-    <div class="flow-step reveal"><div class="flow-circle">🎓</div><div class="flow-step-num">STEP 04</div><div class="flow-step-title">受講スタート</div><div class="flow-step-desc">教材・コミュニティへのアクセス権が即日発行されます。</div><span class="flow-step-time">即日〜</span></div>
-    <div class="flow-step reveal"><div class="flow-circle">🚀</div><div class="flow-step-num">STEP 05</div><div class="flow-step-title">案件獲得・収益化</div><div class="flow-step-desc">サポートを受けながら初案件を受注。収益化を目指します。</div><span class="flow-step-time">3ヶ月目標</span></div>
+    <div class="flow-step reveal"><div class="flow-circle">01</div><div class="flow-step-num">STEP 01</div><div class="flow-step-title">無料説明会に参加</div><div class="flow-step-desc">Zoomで30分。講座の内容をご説明。</div><span class="flow-step-time">約30分</span></div>
+    <div class="flow-step reveal"><div class="flow-circle">02</div><div class="flow-step-num">STEP 02</div><div class="flow-step-title">個別カウンセリング</div><div class="flow-step-desc">現状・目標をヒアリングし最適プランをご提案。</div><span class="flow-step-time">約20分</span></div>
+    <div class="flow-step reveal"><div class="flow-circle">03</div><div class="flow-step-num">STEP 03</div><div class="flow-step-title">お申し込み・決済</div><div class="flow-step-desc">フォームから申し込み完了。分割払いも対応。</div><span class="flow-step-time">5分</span></div>
+    <div class="flow-step reveal"><div class="flow-circle">04</div><div class="flow-step-num">STEP 04</div><div class="flow-step-title">受講スタート</div><div class="flow-step-desc">教材・コミュニティへのアクセス権が即日発行。</div><span class="flow-step-time">即日〜</span></div>
+    <div class="flow-step reveal"><div class="flow-circle">05</div><div class="flow-step-num">STEP 05</div><div class="flow-step-title">案件獲得・収益化</div><div class="flow-step-desc">サポートを受けながら初案件を受注。</div><span class="flow-step-time">3ヶ月目標</span></div>
   </div>
 </section>
 
 <section class="voice" id="voice">
-  <p class="sec-label reveal">受講生の声</p>
-  <h2 class="sec-title reveal">RESULTS</h2>
-  <div class="voice-grid">
-    <div class="voice-card reveal">
-      <div class="voice-stars">★★★★★</div>
-      <div class="voice-result">📈 3ヶ月で月収 +¥68,000</div>
-      <p class="voice-text">公務員として働きながら受講しました。AIの活用法を学んでから作業スピードが格段に上がり、副業として安定して月6万円以上稼げるようになりました。</p>
-      <div class="voice-person"><div class="voice-avatar">S</div><div><div class="voice-name">Sさん（29歳・公務員）</div><div class="voice-meta">スタンダードプラン / 卒業生</div></div></div>
-    </div>
-    <div class="voice-card reveal">
-      <div class="voice-stars">★★★★★</div>
-      <div class="voice-result">💼 卒業後 案件 12件受注</div>
-      <p class="voice-text">独学で半年やって全く稼げなかったのに、PIVOTに入って3ヶ月で初案件を受注。提案文の添削が特に役に立ちました。今は継続クライアントが2社できました。</p>
-      <div class="voice-person"><div class="voice-avatar">T</div><div><div class="voice-name">Tさん（34歳・会社員）</div><div class="voice-meta">ベーシックプラン / 卒業生</div></div></div>
-    </div>
-    <div class="voice-card reveal">
-      <div class="voice-stars">★★★★★</div>
-      <div class="voice-result">🏆 6ヶ月で月収 ¥150,000超え</div>
-      <p class="voice-text">育児中で時間が限られていましたが、自分のペースで学べるのが良かったです。講師さんへの質問に丁寧に答えてもらえて、一人じゃないと感じながら続けられました。</p>
-      <div class="voice-person"><div class="voice-avatar">M</div><div><div class="voice-name">Mさん（31歳・育休中）</div><div class="voice-meta">プレミアムプラン / 継続中</div></div></div>
+  <div class="voice-bg"></div>
+  <div class="voice-inner">
+    <p class="sec-label reveal">受講生の声</p>
+    <h2 class="sec-title reveal">RESULTS</h2>
+    <div class="voice-grid">
+      <div class="voice-card reveal"><div class="voice-stars">★★★★★</div><div class="voice-result">3ヶ月で月収 +¥68,000</div><p class="voice-text">公務員として働きながら受講しました。AIの活用法を学んでから作業スピードが格段に上がり、副業として安定して月6万円以上稼げるようになりました。</p><div class="voice-person"><div class="voice-avatar">S</div><div><div class="voice-name">Sさん（29歳・公務員）</div><div class="voice-meta">スタンダードプラン / 卒業生</div></div></div></div>
+      <div class="voice-card reveal"><div class="voice-stars">★★★★★</div><div class="voice-result">卒業後 案件 12件受注</div><p class="voice-text">独学で半年やって全く稼げなかったのに、PIVOTに入って3ヶ月で初案件を受注。提案文の添削が特に役に立ちました。今は継続クライアントが2社できました。</p><div class="voice-person"><div class="voice-avatar">T</div><div><div class="voice-name">Tさん（34歳・会社員）</div><div class="voice-meta">ベーシックプラン / 卒業生</div></div></div></div>
+      <div class="voice-card reveal"><div class="voice-stars">★★★★★</div><div class="voice-result">6ヶ月で月収 ¥150,000超え</div><p class="voice-text">育児中で時間が限られていましたが、自分のペースで学べるのが良かったです。講師さんへの質問に丁寧に答えてもらえて、一人じゃないと感じながら続けられました。</p><div class="voice-person"><div class="voice-avatar">M</div><div><div class="voice-name">Mさん（31歳・育休中）</div><div class="voice-meta">プレミアムプラン / 継続中</div></div></div></div>
     </div>
   </div>
 </section>
@@ -708,87 +335,49 @@
   <p class="sec-label reveal">よくある質問</p>
   <h2 class="sec-title reveal">FAQ</h2>
   <div class="faq-inner">
-    <div class="faq-side reveal">
-      <p class="faq-side-text">その他ご不明な点は、無料説明会またはお問い合わせフォームからお気軽にご連絡ください。</p>
-      <a href="#contact" class="faq-contact">お問い合わせ</a>
-    </div>
+    <div class="faq-side reveal"><p class="faq-side-text">その他ご不明な点は、無料説明会またはお問い合わせフォームからお気軽にご連絡ください。</p><a href="#contact" class="faq-contact">お問い合わせ</a></div>
     <div class="faq-list">
       <div class="faq-item reveal"><button class="faq-q"><span class="faq-q-inner"><span class="faq-q-mark">Q</span>完全未経験でも受講できますか？</span><span class="faq-icon">+</span></button><div class="faq-a">はい、むしろ未経験の方を対象に設計しています。PCの基本操作ができれば、プログラミングやデザインの知識は一切不要です。</div></div>
       <div class="faq-item reveal"><button class="faq-q"><span class="faq-q-inner"><span class="faq-q-mark">Q</span>1日どのくらいの学習時間が必要ですか？</span><span class="faq-icon">+</span></button><div class="faq-a">1日1〜2時間を目安にしています。本業や育児と並行されている方が多く、週末だけでも進められるよう設計されています。</div></div>
-      <div class="faq-item reveal"><button class="faq-q"><span class="faq-q-inner"><span class="faq-q-mark">Q</span>分割払いはできますか？</span><span class="faq-icon">+</span></button><div class="faq-a">はい、クレジットカードの分割払いに対応しています。3回・6回・12回払いをご選択いただけます。詳細は説明会でご確認ください。</div></div>
-      <div class="faq-item reveal"><button class="faq-q"><span class="faq-q-inner"><span class="faq-q-mark">Q</span>受講期間が終わっても動画は見られますか？</span><span class="faq-icon">+</span></button><div class="faq-a">はい、ベーシック以上のプランは受講終了後も動画・テキストへの永続アクセス権が付与されます。復習や業務の参考にいつでもご利用いただけます。</div></div>
+      <div class="faq-item reveal"><button class="faq-q"><span class="faq-q-inner"><span class="faq-q-mark">Q</span>分割払いはできますか？</span><span class="faq-icon">+</span></button><div class="faq-a">はい、クレジットカードの分割払いに対応しています。3回・6回・12回払いをご選択いただけます。</div></div>
+      <div class="faq-item reveal"><button class="faq-q"><span class="faq-q-inner"><span class="faq-q-mark">Q</span>受講期間が終わっても動画は見られますか？</span><span class="faq-icon">+</span></button><div class="faq-a">はい、ベーシック以上のプランは受講終了後も動画・テキストへの永続アクセス権が付与されます。</div></div>
       <div class="faq-item reveal"><button class="faq-q"><span class="faq-q-inner"><span class="faq-q-mark">Q</span>副業が禁止されている会社員でも大丈夫ですか？</span><span class="faq-icon">+</span></button><div class="faq-a">受講自体に問題はありません。ただし実際の副業開始については、勤務先の就業規則をご確認のうえ進めることをおすすめします。</div></div>
     </div>
   </div>
 </section>
 
 <section class="cta" id="contact">
-  <div class="cta-img"></div>
+  <div class="cta-bg"></div>
   <div class="cta-overlay"></div>
   <div class="cta-inner">
     <h2 class="reveal">今すぐ、<br><em>最初の一歩を踏み出そう。</em></h2>
     <p class="cta-sub reveal">無料説明会は毎週開催。申し込みから3分で完了します。<br>強引な勧誘は一切行いません。</p>
-    <div class="cta-form reveal">
-      <input type="email" class="cta-input" placeholder="メールアドレスを入力">
-      <button class="cta-btn">無料説明会に申し込む</button>
-    </div>
+    <div class="cta-form reveal"><input type="email" class="cta-input" placeholder="メールアドレスを入力"><button class="cta-btn">無料説明会に申し込む</button></div>
     <p class="cta-note reveal">※ 返信は24時間以内。キャンセルはいつでも可能です。</p>
   </div>
 </section>
 
 <footer>
   <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="footer-logo">P<em>I</em>VOT</a>
-      <p>AIを活用した副業・フリーランス養成オンライン講座<br>完全オンライン / 全国から受講可能</p>
-    </div>
+    <div class="footer-brand"><a href="#" class="footer-logo">P<em>I</em>VOT</a><p>AIを活用した副業・フリーランス養成オンライン講座<br>完全オンライン / 全国から受講可能</p></div>
     <div class="footer-links">
-      <div class="footer-col">
-        <h4>Course</h4>
-        <a href="#features">PIVOTの特徴</a>
-        <a href="#curriculum">カリキュラム</a>
-        <a href="#pricing">料金プラン</a>
-        <a href="#flow">受講の流れ</a>
-      </div>
-      <div class="footer-col">
-        <h4>Info</h4>
-        <a href="#voice">受講生の声</a>
-        <a href="#faq">よくある質問</a>
-        <a href="#contact">無料説明会に参加</a>
-        <a href="#">プライバシーポリシー</a>
-      </div>
+      <div class="footer-col"><h4>Course</h4><a href="#features">PIVOTの特徴</a><a href="#curriculum">カリキュラム</a><a href="#pricing">料金プラン</a><a href="#flow">受講の流れ</a></div>
+      <div class="footer-col"><h4>Info</h4><a href="#voice">受講生の声</a><a href="#faq">よくある質問</a><a href="#contact">無料説明会に参加</a><a href="#">プライバシーポリシー</a></div>
     </div>
   </div>
-  <div class="footer-bottom">
-    <span>© 2025 PIVOT Online School. All rights reserved.</span>
-    <span>運営：PIVOT合同会社</span>
-  </div>
+  <div class="footer-bottom"><span>© 2025 PIVOT Online School. All rights reserved.</span><span>運営：PIVOT合同会社</span></div>
 </footer>
 
 <script>
-  const revealEls = document.querySelectorAll('.reveal');
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('visible'), i * 70);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  revealEls.forEach(el => obs.observe(el));
-
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => {
-        i.classList.remove('open');
-        i.querySelector('.faq-icon').textContent = '+';
-      });
-      if (!isOpen) {
-        item.classList.add('open');
-        btn.querySelector('.faq-icon').textContent = '−';
-      }
+    entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*70); obs.unobserve(e.target); } });
+  }, {threshold:.08});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.parentElement, isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-icon').textContent='+';});
+      if(!isOpen){item.classList.add('open');btn.querySelector('.faq-icon').textContent='−';}
     });
   });
 </script>
